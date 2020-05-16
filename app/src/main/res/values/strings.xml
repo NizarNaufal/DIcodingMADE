@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">DicodingMADE</string>
+    <string name="detail_activity" translatable="false">Detail User</string>
+    <string name="user_image">User Image</string>
+    <string name="user_saved">User Saved</string>
+    <string name="github_user">Github</string>
+    <string name="your_saved_users">Your Saved Users</string>
+    <string name="favourite">Search</string>
+    <string name="enter_the_username">Enter the username</string>
+    <string name="no_result">No Result For Your Query</string>
+    <string name="setting">Setting</string>
+    <string name="comeback">Comeback!</string>
+    <string name="check_user">Check this users now!</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <string name="change">Change Language</string>
+    <string name="repositories">Repositories</string>
+    <string name="image">TODO IMAGE</string>
+    <string name="repos">Repository</string>
+    <string name="name">Nizar Naufal</string>
+    <string name="company">PT TEKNOLOGI KEAMANAN SIBER</string>
+    <string name="location">Bandung, Jawa Barat</string>
+    <string name="search_hint">Search By Username</string>
+    <string name="github">GITHUB</string>
+    <string name="todo">TODO</string>
+</resources>
