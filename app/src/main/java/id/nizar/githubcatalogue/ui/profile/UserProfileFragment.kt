@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import id.nizar.githubcatalogue.R
@@ -13,6 +14,7 @@ import id.nizar.githubcatalogue.data.model.SearchUser
 import id.nizar.githubcatalogue.ui.base.BaseFragment
 import id.nizar.githubcatalogue.ui.profile.tab.TabAdapter
 import id.nizar.githubcatalogue.ui.search.MainActivity
+import id.nizar.githubcatalogue.ui.search.MainViewModel
 import id.nizar.githubcatalogue.ui.search.userlist.SearchFragment
 import id.nizar.githubcatalogue.viewmodel.ViewFactoryModel
 import id.nizar.githubcatalogue.widgets.NetworkUtils
@@ -34,8 +36,7 @@ class UserProfileFragment : BaseFragment<UserProfileViewModel>() {
      lateinit var currentUser: SearchUser
 
     override fun getViewModel(): UserProfileViewModel {
-        userProfileViewModel = ViewModelProviders.of(this@UserProfileFragment, viewFactoryModel)
-            .get(UserProfileViewModel::class.java)
+        userProfileViewModel = ViewModelProvider(this, viewFactoryModel).get(UserProfileViewModel::class.java)
         return userProfileViewModel
     }
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.nizar.githubcatalogue.data.model.Follower
@@ -15,6 +16,7 @@ import id.nizar.githubcatalogue.ui.search.MainActivity
 import id.nizar.githubcatalogue.viewmodel.ViewFactoryModel
 import id.nizar.githubcatalogue.widgets.NetworkUtils
 import id.nizar.githubcatalogue.R
+import id.nizar.githubcatalogue.ui.search.MainViewModel
 import kotlinx.android.synthetic.main.fragment_followers.*
 import javax.inject.Inject
 
@@ -62,8 +64,7 @@ class FollowingFragment : BaseFragment<FollowingViewModel>() {
     }
 
     override fun getViewModel(): FollowingViewModel {
-        followingViewModel = ViewModelProviders.of(this@FollowingFragment, viewFactoryModel)
-            .get(FollowingViewModel::class.java)
+        followingViewModel = ViewModelProvider(this, viewFactoryModel).get(FollowingViewModel::class.java)
         return followingViewModel
     }
 
@@ -87,7 +88,7 @@ class FollowingFragment : BaseFragment<FollowingViewModel>() {
     private fun observeFollowingList() {
         followingViewModel.followingList.observe(this, Observer {
             followingList.clear()
-            followingList.addAll(it!!)
+            followingList.addAll(it)
             followingListAdapter.notifyDataSetChanged()
         })
     }

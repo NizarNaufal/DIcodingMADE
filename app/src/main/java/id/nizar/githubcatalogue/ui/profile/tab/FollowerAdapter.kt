@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.nizar.githubcatalogue.R
@@ -25,16 +27,18 @@ class FollowerAdapter (val context: Context, private  var userList: ArrayList<Fo
     override fun getItemCount() = userList.size
 
     override fun onBindViewHolder(holder: FollowerViewHolder, position: Int) {
-        Glide.with(context)
-            .load(userList[position].avatarUrl)
-            .into(holder.ivUserAvatar)
+        holder.ivUserAvatar?.let {
+            Glide.with(context)
+                .load(userList[position].avatarUrl)
+                .into(it)
+        }
 
-        holder.tvUserName.text = userList[position].login
+        holder.tvUserName?.text = userList[position].login
     }
 
 
     class FollowerViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val ivUserAvatar = view.civUserAvatar!!
-        val tvUserName = view.tvLoginId!!
+        val ivUserAvatar: AppCompatImageView? = view.civUserAvatar
+        val tvUserName: AppCompatTextView? = view.tvLoginId
     }
 }

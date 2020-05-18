@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.nizar.githubcatalogue.R
@@ -13,6 +14,7 @@ import id.nizar.githubcatalogue.data.model.SearchUser
 import id.nizar.githubcatalogue.ui.base.BaseFragment
 import id.nizar.githubcatalogue.ui.profile.tab.FollowerAdapter
 import id.nizar.githubcatalogue.ui.search.MainActivity
+import id.nizar.githubcatalogue.ui.search.MainViewModel
 import id.nizar.githubcatalogue.viewmodel.ViewFactoryModel
 import id.nizar.githubcatalogue.widgets.NetworkUtils
 import kotlinx.android.synthetic.main.fragment_followers.*
@@ -60,8 +62,7 @@ class FollowersFragment : BaseFragment<FollowerViewModel>() {
     }
 
     override fun getViewModel(): FollowerViewModel {
-        followerViewModel = ViewModelProviders.of(this@FollowersFragment, viewFactoryModel)
-            .get(FollowerViewModel::class.java)
+        followerViewModel = ViewModelProvider(this, viewFactoryModel).get(FollowerViewModel::class.java)
         return followerViewModel
     }
 
@@ -86,7 +87,7 @@ class FollowersFragment : BaseFragment<FollowerViewModel>() {
     private fun observeFollowersList() {
         followerViewModel.followersList.observe(this, Observer {
             followersList.clear()
-            followersList.addAll(it!!)
+            followersList.addAll(it)
             followerListAdapter.notifyDataSetChanged()
         })
     }
