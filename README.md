@@ -1,7 +1,6 @@
 # DicodingMADE
 
-![Home](screenshot/home.jpg) 
-![Detail](screenshot/detail.jpg)
+![Home](screenshot/merge.jpg)
 
 Dagger + Retrofit + RxJava + Fragment LifeCycle For Search User Details Github
 
