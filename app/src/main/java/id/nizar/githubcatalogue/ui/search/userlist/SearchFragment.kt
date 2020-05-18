@@ -75,23 +75,23 @@ class SearchFragment : BaseFragment<SearchViewModel>(), SearchListAdapter.OnUser
 
     private fun observeMessage() {
         searchViewModel.message.observe(viewLifecycleOwner, Observer {
-            (activity as MainActivity).showInfoToast(it!!)
+            (activity as MainActivity).showInfoToast(it)
         })
     }
 
     private fun observeLoading() {
         searchViewModel.loading.observe(viewLifecycleOwner, Observer {
-            (activity as MainActivity).setProgressVisibility(it!!)
+            (activity as MainActivity).setProgressVisibility(it)
         })
     }
 
     private fun observeSearchedUserList() {
         searchViewModel.searchedUsersList.observe(viewLifecycleOwner, Observer {
             if (currentQuery == lastQuery) {
-                searchUsersList.addAll(it!!)
+                searchUsersList.addAll(it)
             } else {
                 searchUsersList.clear()
-                searchUsersList.addAll(it!!)
+                searchUsersList.addAll(it)
             }
 
             searchListAdapter.notifyDataSetChanged()
@@ -134,14 +134,12 @@ class SearchFragment : BaseFragment<SearchViewModel>(), SearchListAdapter.OnUser
                     pageNumber = 1
                     subject.onNext(newText)
                 } else {
-                    currentQuery = ""
                     searchUsersList.clear()
                     searchListAdapter.notifyDataSetChanged()
                 }
                 return false
             }
         })
-
         return subject
     }
 
